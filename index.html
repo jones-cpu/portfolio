@@ -221,6 +221,71 @@
     </div>
   </footer>
   <a href="#" id="backToTop" aria-label="Back to top"><i class="fas fa-chevron-up"></i></a>
-  <!-- Optional: Add your JS for mobile nav, back to top, etc. -->
+  <script>
+        // Mobile menu toggle functionality
+        document.querySelector('.mobile-menu-button').addEventListener('click', function() {
+            this.classList.toggle('active');
+            document.querySelector('.nav-links').classList.toggle('show');
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                document.querySelector('.mobile-menu-button').classList.remove('active');
+                document.querySelector('.nav-links').classList.remove('show');
+                
+                // Update active nav link
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    link.classList.remove('active');
+                });
+                this.classList.add('active');
+            });
+        });
+        
+        // Active navigation highlighting
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+<a href="#home" aria-label="Back to top" id="backToTop" style="position:fixed;bottom:30px;right:30px;background:#1f6feb;color:white;padding:12px 16px;border-radius:50%;box-shadow:0 4px 15px rgba(0,0,0,0.3);font-size:1.2rem;text-decoration:none;z-index:1000;display:none;">↑</a>
+<script>
+  window.addEventListener("scroll", function () {
+    const btn = document.getElementById("backToTop");
+    btn.style.display = window.scrollY > 400 ? "block" : "none";
+  });
+</script>
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 1000,
+    once: true,
+    offset: 80
+  });
+</script>
 </body>
 </html>
