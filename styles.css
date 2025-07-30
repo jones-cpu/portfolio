@@ -100,7 +100,7 @@
         }
 
         .nav-links li a {
-            color: var(--light);
+            color: white;
             text-decoration: none;
             font-weight: 500;
             padding: 0.6rem 1.2rem;
