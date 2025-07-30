@@ -1,1447 +1,226 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Jones Mwamba - Professional Portfolio</title>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
-<style>
-        :root {
-            --primary: #1f6feb;
-            --primary-light: #4a8ff2;
-            --primary-dark: #0d4f9e;
-            --dark: #0d1117;
-            --darker: #161b22;
-            --darkest: #0a0d12;
-            --light: #f0f6fc;
-            --light-gray: #e6eef7;
-            --gray: #c9d1d9;
-            --bord>er: #30363d;
-            --shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-            --transition: all 0.3s ease;
-            --section-padding: 6rem 10%;
-            --border-radius: 12px;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 100px;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.7;
-            color: var(--light);
-            background: 
-                linear-gradient(135deg, var(--darkest) 0%, var(--darker) 50%, var(--dark) 100%),
-                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" opacity="0.03"><rect fill="white" width="50" height="50"/><path d="M50 0L100 50L50 100L0 50Z" fill="%231f6feb" opacity="0.1"/></svg>');
-            background-size: cover, 150px;
-            padding-top: 90px;
-            overflow-x: hidden;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .highlight {
-            color: var(--primary);
-            font-weight: 600;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(13, 17, 23, 0.96);
-            padding: 1.2rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            z-index: 1000;
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(31, 111, 235, 0.2);
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 1.2rem;
-        }
-
-        .logo img {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            transition: var(--transition);
-            border: 2px solid var(--primary);
-        }
-
-        .logo img:hover {
-            transform: scale(1.08);
-            box-shadow: 0 0 15px var(--primary-light);
-        }
-
-        .logo-text {
-            font-weight: 700;
-            font-size: 1.3rem;
-            color: var(--light);
-            letter-spacing: 0.5px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2.5rem;
-            list-style: none;
-        }
-
-        .nav-links li a {
-            color: var(--light);
-            text-decoration: none;
-            font-weight: 500;
-            padding: 0.6rem 1.2rem;
-            border-radius: 30px;
-            transition: var(--transition);
-            position: relative;
-            font-size: 1.05rem;
-        }
-
-        .nav-links li a:hover {
-            color: var(--primary-light);
-            background: rgba(31, 111, 235, 0.1);
-        }
-
-        .nav-links li a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 3px;
-            background: var(--primary);
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            transition: var(--transition);
-            border-radius: 2px;
-        }
-
-        .nav-links li a:hover::after,
-        .nav-links li a.active::after {
-            width: 70%;
-        }
-
-        .nav-links li a.active {
-            color: var(--primary-light);
-        }
-
-        .mobile-menu-button {
-            display: none;
-            flex-direction: column;
-            justify-content: space-between;
-            width: 34px;
-            height: 24px;
-            cursor: pointer;
-        }
-
-        .menu-line {
-            height: 3px;
-            width: 100%;
-            background: var(--light);
-            transition: var(--transition);
-            border-radius: 2px;
-        }
-
-        /* Mobile Navigation */
-        .nav-links.show {
-            transform: translateX(0) !important;
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 2rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(31,111,235,0.1) 0%, rgba(13,17,23,0) 70%);
-            z-index: -1;
-        }
-
-        .intro {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            padding: 3rem;
-            background: rgba(22, 27, 34, 0.7);
-            border-radius: var(--border-radius);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(31, 111, 235, 0.2);
-            box-shadow: var(--shadow);
-        }
-
-        .intro h1 {
-            font-size: 2.8rem;
-            margin-bottom: 1.8rem;
-            line-height: 1.2;
-        }
-
-        .img-container {
-            width: 220px;
-            height: 220px;
-            margin: 0 auto 1.8rem;
-            border-radius: 50%;
-            overflow: hidden;
-            border: 6px solid var(--primary);
-            box-shadow: 0 0 30px rgba(31, 111, 235, 0.4);
-            transition: var(--transition);
-        }
-
-        .img-container:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 40px rgba(31, 111, 235, 0.6);
-        }
-
-        .img-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .tagline {
-            font-size: 1.3rem;
-            margin: 1.5rem 0 2.5rem;
-            color: var(--gray);
-            font-style: italic;
-            position: relative;
-            display: inline-block;
-            padding: 0 20px;
-        }
-
-        .tagline::before,
-        .tagline::after {
-            content: "❝";
-            position: absolute;
-            top: -15px;
-            left: 0;
-            font-size: 2.5rem;
-            color: var(--primary);
-            opacity: 0.6;
-        }
-
-        .tagline::after {
-            content: "❞";
-            left: auto;
-            right: 0;
-        }
-
-        /* Section Styles */
-        .section-block {
-            padding: var(--section-padding);
-            position: relative;
-        }
-
-        .alt-bg {
-            background: rgba(22, 27, 34, 0.7);
-            backdrop-filter: blur(5px);
-            border-top: 1px solid rgba(31, 111, 235, 0.1);
-            border-bottom: 1px solid rgba(31, 111, 235, 0.1);
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-            position: relative;
-        }
-
-        .section-header h2 {
-            font-size: 2.4rem;
-            margin-bottom: 1.2rem;
-            display: inline-block;
-            position: relative;
-            padding-bottom: 15px;
-        }
-
-        .section-header h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: var(--primary);
-            border-radius: 2px;
-        }
-
-        .divider {
-            width: 100px;
-            height: 4px;
-            background: var(--primary);
-            margin: 1.5rem auto 0;
-            border-radius: 2px;
-        }
-
-        /* About Section */
-        .about-content {
-            max-width: 1000px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .about-content p {
-            font-size: 1.1rem;
-            margin-bottom: 2.5rem;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.8;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2.5rem;
-            margin-top: 3rem;
-        }
-
-        .skill-category {
-            background: rgba(31, 111, 235, 0.08);
-            padding: 2rem 1.8rem;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            border: 1px solid rgba(31, 111, 235, 0.15);
-            transition: var(--transition);
-            text-align: left;
-        }
-
-        .skill-category:hover {
-            transform: translateY(-5px);
-            background: rgba(31, 111, 235, 0.12);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
-        }
-
-        .skill-category h3 {
-            color: var(--primary-light);
-            margin-bottom: 1.5rem;
-            font-size: 1.4rem;
-            position: relative;
-            padding-bottom: 10px;
-        }
-
-        .skill-category h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 3px;
-            background: var(--primary);
-            border-radius: 2px;
-        }
-
-        .skill-category ul {
-            list-style-type: none;
-        }
-
-        .skill-category li {
-            margin-bottom: 0.9rem;
-            padding-left: 1.8rem;
-            position: relative;
-            font-size: 1.05rem;
-        }
-
-        .skill-category li::before {
-            content: '▹';
-            position: absolute;
-            left: 0;
-            color: var(--primary);
-        }
-
-        .education {
-            margin-top: 4rem;
-            background: rgba(31, 111, 235, 0.08);
-            padding: 2.5rem;
-            border-radius: var(--border-radius);
-            border: 1px solid rgba(31, 111, 235, 0.15);
-        }
-
-        .education h3 {
-            color: var(--primary-light);
-            margin-bottom: 1.5rem;
-            font-size: 1.4rem;
-        }
-
-        .education p {
-            margin-bottom: 0;
-            font-size: 1.1rem;
-        }
-
-        /* Services Section */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
-        }
-
-        .service-card {
-            background: rgba(13, 17, 23, 0.7);
-            padding: 2.5rem;
-            border-radius: var(--border-radius);
-            text-align: center;
-            transition: var(--transition);
-            box-shadow: var(--shadow);
-            border: 1px solid rgba(31, 111, 235, 0.15);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-            border-color: rgba(31, 111, 235, 0.3);
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: var(--primary);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.5s ease;
-        }
-
-        .service-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .service-icon {
-            font-size: 3.5rem;
-            margin-bottom: 1.8rem;
-            color: var(--primary);
-            display: inline-block;
-            transition: var(--transition);
-        }
-
-        .service-card:hover .service-icon {
-            transform: scale(1.1);
-        }
-
-        .service-card h3 {
-            margin-bottom: 1.5rem;
-            color: var(--primary-light);
-            font-size: 1.5rem;
-        }
-
-        .service-card ul {
-            list-style-type: none;
-            margin-bottom: 1.5rem;
-        }
-
-        .service-card li {
-            margin-bottom: 0.8rem;
-            padding: 0.5rem 0;
-            position: relative;
-            font-size: 1.05rem;
-        }
-
-        .service-card li::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 1px;
-            background: rgba(31, 111, 235, 0.3);
-        }
-
-        .service-card li:last-child::after {
-            display: none;
-        }
-
-        /* Projects Section */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 2.5rem;
-        }
-
-        .project-card {
-            background: rgba(13, 17, 23, 0.7);
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            transition: var(--transition);
-            box-shadow: var(--shadow);
-            border: 1px solid rgba(31, 111, 235, 0.15);
-            position: relative;
-        }
-
-        .project-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-            border-color: rgba(31, 111, 235, 0.3);
-        }
-
-        .project-image {
-            height: 280px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .project-image::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(transparent 60%, rgba(13, 17, 23, 0.9));
-            z-index: 1;
-        }
-
-        .project-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-
-        .project-card:hover .project-image img {
-            transform: scale(1.1);
-        }
-
-        .project-info {
-            padding: 2rem;
-            position: relative;
-            z-index: 2;
-        }
-
-        .project-info h3 {
-            margin-bottom: 0.8rem;
-            font-size: 1.4rem;
-            color: var(--light);
-        }
-
-        .project-info p {
-            color: var(--gray);
-            margin-bottom: 1.5rem;
-            min-height: 60px;
-        }
-
-        .project-tech {
-            display: flex;
-            gap: 0.8rem;
-            margin-bottom: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        .project-tech span {
-            background: rgba(31, 111, 235, 0.15);
-            color: var(--primary-light);
-            padding: 0.4rem 1rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-
-        .project-category {
-            display: inline-block;
-            background: var(--primary);
-            color: white;
-            padding: 0.5rem 1.2rem;
-            border-radius: 30px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-        }
-
-        /* Contact Section */
-        .contact-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 4rem;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .contact-form {
-            display: flex;
-            flex-direction: column;
-            gap: 1.8rem;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.8rem;
-        }
-
-        .form-group label {
-            font-weight: 500;
-            font-size: 1.05rem;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            padding: 1rem;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            background: rgba(13, 17, 23, 0.5);
-            color: var(--light);
-            font-size: 1rem;
-            transition: var(--transition);
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(31, 111, 235, 0.2);
-        }
-
-        .form-group textarea {
-            min-height: 180px;
-            resize: vertical;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-            padding: 2rem;
-            background: rgba(13, 17, 23, 0.5);
-            border-radius: var(--border-radius);
-            border: 1px solid rgba(31, 111, 235, 0.15);
-        }
-
-        .contact-info h3 {
-            color: var(--primary-light);
-            font-size: 1.6rem;
-            margin-bottom: 1rem;
-            position: relative;
-            padding-bottom: 10px;
-        }
-
-        .contact-info h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 60px;
-            height: 3px;
-            background: var(--primary);
-            border-radius: 2px;
-        }
-
-        address p {
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            font-size: 1.1rem;
-        }
-
-        address p::before {
-            content: '';
-            width: 24px;
-            height: 24px;
-            display: inline-block;
-            background-size: contain;
-        }
-
-        address p:nth-child(1)::before {
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%231f6feb"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>');
-        }
-
-        address p:nth-child(2)::before {
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%231f6feb"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>');
-        }
-
-        address p:nth-child(3)::before {
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%231f6feb"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>');
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1.5rem;
-            margin-top: 1rem;
-        }
-
-        .social-icon {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-            background: rgba(31, 111, 235, 0.15);
-            border-radius: 50%;
-            font-weight: bold;
-            transition: var(--transition);
-            font-size: 1.3rem;
-        }
-
-        .social-icon:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-5px);
-        }
-
-        /* Buttons */
-        .cta-button {
-            display: inline-block;
-            padding: 1rem 2.5rem;
-            background: var(--primary);
-            color: white;
-            text-decoration: none;
-            border-radius: 30px;
-            font-weight: 600;
-            transition: var(--transition);
-            border: 2px solid transparent;
-            font-size: 1.1rem;
-            letter-spacing: 0.5px;
-            box-shadow: 0 4px 15px rgba(31, 111, 235, 0.3);
-            cursor: pointer;
-            border: none;
-        }
-
-        .cta-button:hover {
-            background: transparent;
-            border-color: var(--primary);
-            color: var(--primary-light);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(31, 111, 235, 0.4);
-        }
-
-        /* Footer */
-        footer {
-            background: rgba(10, 13, 18, 0.9);
-            padding: 3rem 2rem;
-            text-align: center;
-            border-top: 1px solid rgba(31, 111, 235, 0.1);
-        }
-
-        .footer-content {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .footer-identity {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .footer-identity img {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            margin-bottom: 1.2rem;
-            border: 2px solid var(--primary);
-        }
-
-        .footer-identity h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-identity p {
-            color: var(--gray);
-            font-size: 1.05rem;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin: 1.5rem 0;
-            flex-wrap: wrap;
-        }
-
-        .footer-links a {
-            color: var(--gray);
-            text-decoration: none;
-            transition: var(--transition);
-            font-size: 1.05rem;
-            padding: 0.5rem;
-        }
-
-        .footer-links a:hover {
-            color: var(--primary-light);
-        }
-
-        .copyright {
-            margin-top: 1.5rem;
-            color: var(--gray);
-            font-size: 1.05rem;
-        }
-
-
-/* CTA Button */
-.cta-button {
-  background: #1f6feb;
-  padding: 10px 20px;
-  color: white;
-  border-radius: 5px;
-  text-decoration: none;
-  display: inline-block;
-  transition: background 0.3s ease;
-}
-.cta-button:hover {
-  background: #155bb5;
-}
-
-/* Testimonials Grid */
-#testimonials .container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-}
-.testimonial {
-  background: rgba(31, 111, 235, 0.08);
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-/* Back to Top Button */
-#backToTop {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  background: #1f6feb;
-  color: white;
-  padding: 12px 16px;
-  border-radius: 50%;
-  font-size: 1.2rem;
-  text-decoration: none;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-  display: none;
-  z-index: 1000;
-}
-
-/* Navigation */
-nav {
-  background: #161b22;
-  padding: 15px;
-}
-.nav-links {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
-  margin: 0;
-  padding: 0;
-}
-.nav-links li a {
-  color: white;
-  text-decoration: none;
-  padding: 8px 12px;
-}
-.nav-links li a:hover {
-  background: rgba(255,255,255,0.1);
-  border-radius: 4px;
-}
-
-/* Media Queries */
-@media (max-width: 768px) {
-  .nav-links {
-    flex-direction: column;
-    align-items: center;
-  }
-  .section-block {
-    padding: 40px 15px;
-  }
-  .cta-button {
-    font-size: 0.95rem;
-  }
-  #backToTop {
-    bottom: 20px;
-    right: 20px;
-  }
-}
-
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            :root {
-                --section-padding: 5rem 8%;
-            }
-            
-            .nav-links {
-                gap: 1.8rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            :root {
-                --section-padding: 4rem 5%;
-            }
-            
-            .mobile-menu-button {
-                display: flex;
-            }
-
-            .nav-links {
-                position: fixed;
-                top: 90px;
-                left: 0;
-                width: 100%;
-                background: rgba(13, 17, 23, 0.95);
-                flex-direction: column;
-                align-items: center;
-                padding: 2rem 0;
-                transform: translateX(-100%);
-                transition: var(--transition);
-                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-                backdrop-filter: blur(10px);
-                gap: 1.5rem;
-            }
-
-            .intro h1 {
-                font-size: 2.2rem;
-            }
-            
-            .img-container {
-                width: 180px;
-                height: 180px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .logo-text {
-                display: none;
-            }
-
-            .hero {
-                padding: 4rem 1rem;
-            }
-            
-            .tagline {
-                font-size: 1.1rem;
-            }
-            
-            .contact-container {
-                grid-template-columns: 1fr;
-            }
-        }
-    
-/* Additional Responsive Fixes */
-@media (max-width: 768px) {
-  .skills-grid, .services-grid, .projects-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .img-container {
-    width: 160px;
-    height: 160px;
-  }
-
-  .intro h1 {
-    font-size: 1.8rem;
-  }
-
-  .contact-container {
-    grid-template-columns: 1fr;
-  }
-
-  .project-image {
-    height: 200px;
-  }
-
-  .nav-links {
-    padding: 1.5rem 0;
-  }
-}
-
-@media (max-width: 480px) {
-  nav {
-    padding: 1rem 2%;
-  }
-
-  .nav-links {
-    padding: 1.2rem 0;
-  }
-
-  .cta-button {
-    font-size: 1rem;
-    padding: 0.8rem 1.6rem;
-  }
-
-  .section-header h2 {
-    font-size: 1.6rem;
-  }
-
-  .tagline {
-    font-size: 1rem;
-  }
-
-  footer .footer-links {
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .form-group input,
-  .form-group textarea {
-    font-size: 0.95rem;
-  }
-}
-</style>
-
-<meta content="Jones Mwamba is a computer science student and developer in Zambia. This is his portfolio of web, design, and productivity solutions." name="description"/>
-<meta content="Jones Mwamba, Web Developer, Graphic Designer, Zambia, PHP, HTML, CSS, MySQL, PowerPoint, Excel, Manda Hill Excellence Hub" name="keywords"/>
-<meta content="Jones Mwamba" name="author"/>
-<meta content="Jones Mwamba - Portfolio" property="og:title"/>
-<meta content="Explore Jones Mwamba’s portfolio of professional services and projects." property="og:description"/>
-<meta content="https://jonesmwelwamariamwamba.blogspot.com/logo.jpg" property="og:image"/>
-<meta content="https://jonesmwelwamariamwamba.blogspot.com/" property="og:url"/>
-<meta content="index, follow" name="robots"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jones Mwamba - Professional Portfolio</title>
+  <meta name="description" content="Jones Mwamba's professional portfolio. Web developer, designer, and more.">
+  <!-- Open Graph for social sharing -->
+  <meta property="og:title" content="Jones Mwamba - Professional Portfolio">
+  <meta property="og:description" content="Explore my projects, skills, and services.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="profile.jpg"><!-- Set to your actual image URL -->
+  <link rel="icon" href="favicon.ico">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<nav>
-<div class="logo">
-<img alt="Jones Mwamba Logo" src="logo.jpg"/>
-<span class="logo-text">Jones Mwamba</span>
-</div>
-<!-- Updated NAVIGATION HOME LINK -->
-<ul class="nav-links">
-<li><a class="active" href="#home">HOME</a></li>
-<li><a href="#about">ABOUT</a></li>
-<li><a href="#services">SERVICES</a></li>
-<li><a href="#projects">PROJECTS</a></li>
-<li><a href="#contact">CONTACT</a></li>
-<li><a href="#cv">DOWNLOAD CV</a></li>
-<li><a href="#testimonials">TESTIMONIALS</a></li>
-</ul>
-<div class="mobile-menu-button">
-<span class="menu-line"></span>
-<span class="menu-line"></span>
-<span class="menu-line"></span>
-</div>
-</nav>
-<!-- Updated HERO SECTION with id="home" -->
-<section class="hero" id="home">
-<div class="intro">
-<h1>Welcome to my <span class="highlight">Portfolio</span></h1>
-<div class="img-container">
-<img alt="Jones Mwamba" src="jones.jpg"/>
-</div>
-<h2>Jones Mwamba</h2>
-<p class="tagline">
-                "Building the future, one line of code at a time."
-            </p>
-
-</div>
-</section>
-<section class="section-block" id="about">
-<div class="container">
-<div class="section-header">
-<h2>About Me</h2>
-<div class="divider"></div>
-</div>
-<div class="about-content">
-<p>
-                    Hi! I'm Jones Mwamba, a Computer Science student at Manda Hill Excellence Hub in Zambia. 
-                    I specialize in web development, programming, and cybersecurity with hands-on 
-                    experience in creating practical tech solutions. Currently expanding my skills in 
-                    database management with MySQL while developing efficient solutions with HTML, CSS, 
-                    and PHP.
-                </p>
-<div class="skills-grid">
-<div class="skill-category">
-<h3>Technical Skills</h3>
-<ul>
-<li>HTML5 &amp; CSS3 - Responsive web design</li>
-<li>PHP Development - Dynamic web applications</li>
-<li>MySQL Databases - Beginner level</li>
-<li>JavaScript Fundamentals</li>
-<li>Git Version Control</li>
-</ul>
-</div>
-<div class="skill-category">
-<h3>Design Skills</h3>
-<ul>
-<li>UI/Graphics Design - Logos, banners, posters</li>
-<li>Presentation Design - Investor-ready decks</li>
-<li>Brand Identity - Business cards, letterheads</li>
-<li>Print Design - Exercise books, calendars</li>
-<li>Apparel Graphics - T-shirt designs</li>
-</ul>
-</div>
-<div class="skill-category">
-<h3>Microsoft Office</h3>
-<ul>
-<li>Word - Certificates, flyers, reports</li>
-<li>Excel - Pivot tables, data analysis</li>
-<li>PowerPoint - Professional presentations</li>
-<li>Document automation</li>
-<li>Template creation</li>
-</ul>
-</div>
-</div>
-<div class="education">
-<h3>Education &amp; Training</h3>
-<p>Currently pursuing Computer Science studies at Manda Hill Excellence Hub with a focus on web technologies, database management, and cybersecurity principles. Continuously expanding my skills through practical projects and professional development.</p>
-</div>
-</div>
-</div>
-</section>
-<section class="section-block alt-bg" id="services">
-<div class="container">
-<div class="section-header">
-<h2>My Services</h2>
-<div class="divider"></div>
-</div>
-<div class="services-grid">
-<div class="service-card">
-<div class="service-icon"><i class="fas fa-laptop-code"></i></div>
-<h3>Web Development</h3>
-<ul>
-<li>Custom Website Development</li>
-<li>Login &amp; Authentication Systems</li>
-<li>Website Maintenance &amp; Updates</li>
-<li>Responsive Design Implementation</li>
-<li>Performance Optimization</li>
-</ul>
-</div>
-<div class="service-card">
-<div class="service-icon"><i class="fas fa-paint-brush"></i></div>
-<h3>Design Services</h3>
-<ul>
-<li>Logo &amp; Brand Identity Design</li>
-<li>Business Cards &amp; Stationery</li>
-<li>Apparel &amp; Merchandise Graphics</li>
-<li>Poster &amp; Banner Design</li>
-<li>Certificate &amp; Document Design</li>
-</ul>
-</div>
-<div class="service-card">
-<div class="service-icon"><i class="fas fa-chart-line"></i></div>
-<h3>Productivity Solutions</h3>
-<ul>
-<li>Excel Automation &amp; Macros</li>
-<li>Data Analysis with Pivot Tables</li>
-<li>Professional PowerPoint Decks</li>
-<li>Document Formatting &amp; Templates</li>
-<li>Report Generation Systems</li>
-</ul>
-</div>
-<div class="service-card">
-<div class="service-icon"><i class="fas fa-file-alt"></i></div>
-<h3>Microsoft Office</h3>
-<ul>
-<li>Advanced Word Document Design</li>
-<li>Excel Data Management Solutions</li>
-<li>Professional Presentation Design</li>
-<li>Template Creation &amp; Customization</li>
-<li>Office Automation Solutions</li>
-</ul>
-</div>
-</div>
-</div>
-</section>
-<section class="section-block" id="projects">
-<div class="container">
-<div class="section-header">
-<h2>Featured Projects</h2>
-<div class="divider"></div>
-</div>
-<div class="projects-grid">
-<!-- Project 1 -->
-<article class="project-card">
-<div class="project-image">
-<img alt="T-shirt Design" loading="lazy" src="shirt.png"/>
-</div>
-<div class="project-info">
-<h3>Apparel Design</h3>
-<p>Custom t-shirt graphics that make your brand stand out with unique designs that capture attention.</p>
-<div class="project-tech">
-<span>Illustrator</span>
-<span>Print Design</span>
-</div>
-<span class="project-category">Graphic Design</span>
-</div>
-</article>
-<!-- Project 2 -->
-<article class="project-card">
-<div class="project-image">
-<img alt="Business Card" loading="lazy" src="bs1.png"/>
-</div>
-<div class="project-info">
-<h3>Brand Identity</h3>
-<p>Professional business card design for corporate clients with modern, memorable branding.</p>
-<div class="project-tech">
-<span>Branding</span>
-<span>Typography</span>
-</div>
-<span class="project-category">Branding</span>
-</div>
-</article>
-<!-- Project 3 -->
-<article class="project-card">
-<div class="project-image">
-<img alt="Presentation Design" loading="lazy" src="pp.jpg"/>
-</div>
-<div class="project-info">
-<h3>Presentation Deck</h3>
-<p>Investor-ready PowerPoint presentations with compelling visuals and clear data storytelling.</p>
-<div class="project-tech">
-<span>PowerPoint</span>
-<span>Data Viz</span>
-</div>
-<span class="project-category">Productivity</span>
-</div>
-</article>
-<!-- Project 4 -->
-<article class="project-card">
-<div class="project-image">
-<img alt="Certificate Design" loading="lazy" src="cert.png"/>
-</div>
-<div class="project-info">
-<h3>Certificate Design</h3>
-<p>Professional certificate templates created in Microsoft Word with elegant typography.</p>
-<div class="project-tech">
-<span>Word</span>
-<span>Layout</span>
-</div>
-<span class="project-category">Microsoft Office</span>
-</div>
-</article>
-<!-- Project 5 -->
-<article class="project-card">
-<div class="project-image">
-<img alt="Excel Dashboard" loading="lazy" src="db.png"/>
-</div>
-<div class="project-info">
-<h3>Data Analysis Dashboard</h3>
-<p>Excel dashboard with pivot tables for comprehensive business data analysis.</p>
-<div class="project-tech">
-<span>Excel</span>
-<span>Pivot Tables</span>
-</div>
-<span class="project-category">Productivity</span>
-</div>
-</article>
-
-</article>
-</div>
-</div>
-</section>
-<section class="section-block" id="cv" data-aos="fade-up">
-  <div class="container">
-    <div class="section-header">
-      <h2>My Resume</h2>
-      <div class="divider"></div>
-    </div>
-    <p style="text-align:center; font-size: 1.1rem;">
-      Click the button below to download my full CV in PDF format:
-    </p>
-    <div style="text-align:center; margin-top:2rem;">
-      <a class="cta-button" href="Jones Mwamba cv.pdf" download>Download CV</a>
-    </div>
-  </div>
-</section>
-<section class="section-block alt-bg" id="testimonials" data-aos="fade-up">
-  <div class="container">
-    <div class="section-header">
-      <h2>Testimonials</h2>
-      <div class="divider"></div>
-    </div>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
-      <div style="background: rgba(31, 111, 235, 0.08); padding: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
-        <p>"Jones delivered a fast, clean, and professional website for my business. I'm impressed by his attention to detail."</p>
-        <strong>- Client Name, Business Owner</strong>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header>
+    <nav aria-label="Main navigation">
+      <div class="logo">
+        <img src="profile.jpg" alt="Jones Mwamba portrait" width="60" height="60" />
+        <span class="logo-text">Jones Mwamba</span>
       </div>
-      <div style="background: rgba(31, 111, 235, 0.08); padding: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
-        <p>"Very reliable and creative in both design and tech. He built our brand from scratch with logos, cards, and documents."</p>
-        <strong>- Happy Client, Graphic Services</strong>
+      <button class="mobile-menu-button" aria-label="Toggle navigation">
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="#about" class="active">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main id="main-content">
+    <!-- Hero Section -->
+    <section class="hero" aria-label="Introduction">
+      <div class="intro">
+        <div class="img-container">
+          <img src="profile.jpg" alt="Portrait of Jones Mwamba" width="220" height="220"/>
+        </div>
+        <h1>Jones Mwamba</h1>
+        <p class="tagline">"Building accessible, modern web solutions."</p>
+        <a href="#contact" class="cta-button">Contact Me</a>
       </div>
-      <div style="background: rgba(31, 111, 235, 0.08); padding: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
-        <p>"Delivered our PowerPoint pitch deck ahead of schedule. Very professional!"</p>
-        <strong>- Startup Founder</strong>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section-block alt-bg" aria-label="About Me">
+      <div class="about-content container">
+        <div class="section-header">
+          <h2>About Me</h2>
+          <div class="divider"></div>
+        </div>
+        <p>
+          I'm Jones Mwamba, a passionate web developer and designer focused on creating fast, accessible, and user-friendly digital products. With a background in both design and programming, I bridge the gap between beautiful visuals and robust functionality.
+        </p>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="section-block" aria-label="Skills">
+      <div class="container">
+        <div class="section-header">
+          <h2>Skills</h2>
+          <div class="divider"></div>
+        </div>
+        <div class="skills-grid">
+          <div class="skill-category">
+            <h3>Frontend</h3>
+            <ul>
+              <li>HTML5, CSS3, JavaScript (ES6+)</li>
+              <li>React, Vue.js</li>
+              <li>Accessibility (WCAG)</li>
+              <li>Responsive Design</li>
+            </ul>
+          </div>
+          <div class="skill-category">
+            <h3>Backend</h3>
+            <ul>
+              <li>Node.js, Express</li>
+              <li>Python, Django</li>
+              <li>RESTful APIs</li>
+              <li>SQL, MongoDB</li>
+            </ul>
+          </div>
+          <div class="skill-category">
+            <h3>Other</h3>
+            <ul>
+              <li>UI/UX Design</li>
+              <li>Git & GitHub</li>
+              <li>Testing & Debugging</li>
+              <li>Continuous Integration</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="section-block alt-bg" aria-label="Services">
+      <div class="container">
+        <div class="section-header">
+          <h2>Services</h2>
+          <div class="divider"></div>
+        </div>
+        <div class="services-grid">
+          <div class="service-card">
+            <span class="service-icon"><i class="fas fa-code"></i></span>
+            <h3>Web Development</h3>
+            <ul>
+              <li>Custom Websites & Apps</li>
+              <li>Single Page Applications</li>
+              <li>Landing Pages</li>
+            </ul>
+          </div>
+          <div class="service-card">
+            <span class="service-icon"><i class="fas fa-paint-brush"></i></span>
+            <h3>UI/UX Design</h3>
+            <ul>
+              <li>Wireframing & Prototyping</li>
+              <li>Design Systems</li>
+              <li>Accessibility Audits</li>
+            </ul>
+          </div>
+          <div class="service-card">
+            <span class="service-icon"><i class="fas fa-cogs"></i></span>
+            <h3>Consulting</h3>
+            <ul>
+              <li>Code Reviews</li>
+              <li>Performance Optimization</li>
+              <li>Mentoring & Training</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="section-block" aria-label="Projects">
+      <div class="container">
+        <div class="section-header">
+          <h2>Projects</h2>
+          <div class="divider"></div>
+        </div>
+        <div class="projects-grid">
+          <!-- Example Project -->
+          <div class="project-card">
+            <div class="project-image">
+              <img src="project1.jpg" alt="Screenshot of Project 1" width="400" height="280">
+            </div>
+            <div class="project-info">
+              <h3>Project Name</h3>
+              <p>Short project description goes here. Highlight the tech and business value.</p>
+              <div class="project-tech">
+                <span>React</span><span>Node.js</span>
+              </div>
+              <span class="project-category">Web App</span>
+            </div>
+          </div>
+          <!-- Add more project cards as needed -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section-block alt-bg" aria-label="Contact">
+      <div class="container contact-container">
+        <form class="contact-form" action="mailto:youremail@example.com" method="POST" enctype="text/plain">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input id="name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
+          <button type="submit" class="cta-button">Send Message</button>
+        </form>
+        <div class="contact-info" aria-label="Contact Information">
+          <h3>Contact Information</h3>
+          <address>
+            <p><i class="fas fa-map-marker-alt"></i> Your City, Country</p>
+            <p><i class="fas fa-envelope"></i> youremail@example.com</p>
+            <p><i class="fas fa-phone"></i> +123 456 7890</p>
+          </address>
+          <div class="social-links">
+            <a href="https://github.com/jones-cpu" class="social-icon" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="#" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <!-- Add more social links as needed -->
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="footer-content">
+      <div class="footer-identity">
+        <img src="profile.jpg" alt="Jones Mwamba" width="70" height="70">
+        <h3>Jones Mwamba</h3>
+        <p>Building the modern web, one project at a time.</p>
+      </div>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#services">Services</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="copyright">
+        &copy; 2025 Jones Mwamba. All rights reserved.
       </div>
     </div>
-  </div>
-</section>
-<section class="section-block alt-bg" id="contact">
-<div class="container">
-<div class="section-header">
-<h2>Get In Touch</h2>
-<div class="divider"></div>
-</div>
-<div class="contact-container">
-<form action="https://formspree.io/f/mnnvwpzq" class="contact-form" method="POST">
-<div class="form-group">
-<label for="name">Name</label>
-<input id="name" name="name" required="" type="text"/>
-</div>
-<div class="form-group">
-<label for="email">Email</label>
-<input id="email" name="email" required="" type="email"/>
-</div>
-<div class="form-group">
-<label for="subject">Subject</label>
-<input id="subject" name="subject" required="" type="text"/>
-</div>
-<div class="form-group">
-<label for="message">Message</label>
-<textarea id="message" name="message" required=""></textarea>
-</div>
-<button class="cta-button" type="submit">Send Message</button>
-</form>
-<div class="contact-info">
-<h3>Direct Contact</h3>
-<address>
-<p>📍 Manda Hill Excellence Hub, Lusaka, Zambia</p>
-<p>📧 <a href="mailto:jonesmwelwamariamwamba@gmail.com">jonesmwelwamariamwamba@gmail.com</a></p>
-<p>📞 <a href="tel:+260962086947">+260 962 086 947</a></p>
-</address>
-<div class="social-links">
-<a aria-label="Facebook" href="http://www.facebook.com/itx.jonesmwelya">
-<span class="social-icon"><i class="fab fa-facebook fa-2x"></i></span>
-</a>
-<a aria-label="WhatsApp" href="https://wa.me/260962086947">
-<span class="social-icon"><i class="fab fa-whatsapp fa-2x"></i></span>
-</a>
-</div>
-<p>Feel free to reach out for collaborations, project inquiries, or any questions about my services. I typically respond within 24 hours.</p>
-</div>
-</div>
-</div>
-</section>
-
-<section class="section-block" id="terms">
-<div class="container">
-<div class="section-header"><h2>Terms of Service</h2><div class="divider"></div></div>
-<p>Your use of this website means you agree to our terms. All content is owned by Jones Mwamba unless stated otherwise. Do not copy without permission.</p>
-</div>
-</section>
-
-<section class="section-block alt-bg" id="privacy">
-<div class="container">
-<div class="section-header"><h2>Privacy Policy</h2><div class="divider"></div></div>
-<p>This website collects basic contact information for communication purposes only. We do not share your data with third parties.</p>
-</div>
-</section>
-<footer>
-<div class="footer-content">
-<div class="footer-identity">
-<img alt="Jones Mwamba Logo" src="logo.jpg"/>
-<h3>Jones Mwamba</h3>
-<p>Computer Science Professional &amp; Tech Enthusiast</p>
-</div>
-<div class="footer-links">
-<a href="#home">Home</a>
-<a href="#about">About</a>
-<a href="#services">Services</a>
-<a href="#projects">Projects</a>
-<a href="#contact">Contact</a>
-<a href="#privacy">Privacy Policy</a>
-<a href="#terms">Terms of Service</a>
-</div >
-
-<p class="copyright">© 2025 Jones Mwamba. All rights reserved.</p>
-</div>
-</footer>
-
-<script>
-        // Mobile menu toggle functionality
-        document.querySelector('.mobile-menu-button').addEventListener('click', function() {
-            this.classList.toggle('active');
-            document.querySelector('.nav-links').classList.toggle('show');
-        });
-        
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-                
-                // Close mobile menu if open
-                document.querySelector('.mobile-menu-button').classList.remove('active');
-                document.querySelector('.nav-links').classList.remove('show');
-                
-                // Update active nav link
-                document.querySelectorAll('.nav-links a').forEach(link => {
-                    link.classList.remove('active');
-                });
-                this.classList.add('active');
-            });
-        });
-        
-        // Active navigation highlighting
-        window.addEventListener('scroll', function() {
-            const sections = document.querySelectorAll('section');
-            const navLinks = document.querySelectorAll('.nav-links a');
-            
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (pageYOffset >= (sectionTop - 100)) {
-                    current = section.getAttribute('id');
-                }
-            });
-            
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href').includes(current)) {
-                    link.classList.add('active');
-                }
-            });
-        });
-    </script>
-<a href="#home" aria-label="Back to top" id="backToTop" style="position:fixed;bottom:30px;right:30px;background:#1f6feb;color:white;padding:12px 16px;border-radius:50%;box-shadow:0 4px 15px rgba(0,0,0,0.3);font-size:1.2rem;text-decoration:none;z-index:1000;display:none;">↑</a>
-<script>
-  window.addEventListener("scroll", function () {
-    const btn = document.getElementById("backToTop");
-    btn.style.display = window.scrollY > 400 ? "block" : "none";
-  });
-</script>
-<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-<script>
-  AOS.init({
-    duration: 1000,
-    once: true,
-    offset: 80
-  });
-</script>
+  </footer>
+  <a href="#" id="backToTop" aria-label="Back to top"><i class="fas fa-chevron-up"></i></a>
+  <!-- Optional: Add your JS for mobile nav, back to top, etc. -->
 </body>
-</html> 
-   
+</html>
